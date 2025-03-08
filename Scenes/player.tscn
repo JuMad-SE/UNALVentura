@@ -125,6 +125,11 @@ animations = [{
 "name": &"jump",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fs7ks")
@@ -167,7 +172,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_vfarp")
-animation = &"fall"
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 2)

@@ -9,7 +9,9 @@ size = Vector2(378, 30)
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
-position = Vector2(84, 217)
+position = Vector2(91, 216)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(223, 244)
