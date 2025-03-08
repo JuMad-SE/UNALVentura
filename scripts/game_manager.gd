@@ -27,6 +27,7 @@ func respawn_player():
 func complete_level():
 	level_complete = true
 	show_victory_screen()
+	get_tree().paused = true
 
 func show_victory_screen():
 	victoryUI = get_tree().get_first_node_in_group("victory_ui")
@@ -34,6 +35,7 @@ func show_victory_screen():
 
 func restart_game():
 	level_complete = false
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func return_to_main_menu():
