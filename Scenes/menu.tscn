@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8ajwfdwxk0jo"]
+[gd_scene load_steps=6 format=3 uid="uid://b8ajwfdwxk0jo"]
 
 [ext_resource type="Script" uid="uid://bwklcb2aolauu" path="res://scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://drujo71y0w0s0" path="res://sprites/background/fondo2.jpeg" id="2_xhh6f"]
+[ext_resource type="Theme" uid="uid://3tx6l7m0r8ph" path="res://resources/default.tres" id="3_158mb"]
+[ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="4_wwsa2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
-bg_color = Color(0.298039, 0.376471, 0.6, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_jsrd8"]
+font = ExtResource("4_wwsa2")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -36,37 +41,45 @@ expand_mode = 1
 
 [node name="Botones" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -161.5
-offset_top = -77.5
+offset_top = -155.0
 offset_right = 161.5
-offset_bottom = 77.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 13
 
 [node name="Jugar" type="Button" parent="Botones"]
 layout_mode = 2
+theme = ExtResource("3_158mb")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
-text = "JUGAR"
+text = "J	ugar"
 
 [node name="Options" type="Button" parent="Botones"]
 layout_mode = 2
+theme = ExtResource("3_158mb")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
-text = "OPCIONES"
+text = "Opciones"
 
 [node name="Quit" type="Button" parent="Botones"]
 layout_mode = 2
+theme = ExtResource("3_158mb")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
-text = "SALIR
+text = "Salir
 "
+
+[node name="Label" type="Label" parent="."]
+offset_left = 65.0
+offset_top = 38.0
+offset_right = 423.0
+offset_bottom = 90.0
+text = "UnalVentura"
+label_settings = SubResource("LabelSettings_jsrd8")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Botones/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="Botones/Options" to="." method="_on_options_pressed"]
