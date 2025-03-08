@@ -316,6 +316,7 @@ size = Vector2(7, 20)
 script = ExtResource("1_cvnsp")
 move_speed = 100.0
 jump_speed = 200.0
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -4)
@@ -333,5 +334,7 @@ metadata/_edit_group_ = true
 position = Vector2(10.5, 2)
 shape = SubResource("RectangleShape2D_6t5aa")
 debug_color = Color(0.709688, 0.327177, 0.9007, 0.42)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
 
 func _ready():
+	add_to_group("player")
 	# Conectar la señal animation_finished
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	# Inicialmente desactivar el área de ataque
@@ -23,6 +24,9 @@ func _physics_process(delta):
 	update_animations()
 	move_and_slide()
 	
+	
+func take_damage(attack_damage):
+	print(attack_damage)
 func update_animations():
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		animated_sprite.play("attack")
@@ -35,7 +39,6 @@ func update_animations():
 		return
 	
 	if velocity.x != 0:
-		
 		animated_sprite.play("run")
 	else:
 		animated_sprite.play("idle")
