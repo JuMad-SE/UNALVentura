@@ -24,6 +24,9 @@ func _physics_process(delta):
 	
 	if global_position.y > 500 and !is_dead:
 		die()
+	
+	if GameManager.level_complete:
+		return
 
 func update_animations():
 	if not is_on_floor():
