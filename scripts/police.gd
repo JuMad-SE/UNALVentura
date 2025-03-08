@@ -163,6 +163,7 @@ func attack_state():
 	
 	# Volver a perseguir al jugador
 	change_state(State.CHASE)
+	
 
 func take_damage(damage):
 	health -= damage
