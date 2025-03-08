@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://nalqghxyv7p8"]
+[gd_scene load_steps=26 format=4 uid="uid://fftovnja16u4"]
 
 [ext_resource type="Script" uid="uid://cj0f0kc6uknl3" path="res://scripts/level.gd" id="1_evi0p"]
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8e5cgijvpir" path="res://Scenes/victoryUI.tscn" id="11_uy8f0"]
 [ext_resource type="PackedScene" uid="uid://byun8pgsil6h2" path="res://Scenes/level_end.tscn" id="12_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://drujo71y0w0s0" path="res://sprites/background/fondo2.jpeg" id="14_6ioyp"]
-[ext_resource type="Script" uid="uid://btfh8rn5pgmoj" path="res://scripts/victory_ui.gd" id="14_pjppf"]
+[ext_resource type="Script" path="res://scripts/victory_ui.gd" id="14_pjppf"]
 [ext_resource type="AudioStream" uid="uid://cbaow3rnp6dhs" path="res://sounds/ataque.mp3" id="15_oovug"]
 [ext_resource type="Texture2D" uid="uid://ba5k4i12k7858" path="res://sprites/ciudadUpper.jpeg" id="15_pjppf"]
 [ext_resource type="AudioStream" uid="uid://bxm5qethe7rp4" path="res://sounds/perder.mp3" id="16_8i23i"]
