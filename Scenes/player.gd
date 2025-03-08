@@ -81,15 +81,15 @@ func die():
 	set_physics_process(false)
 	velocity = Vector2.ZERO  # Detener todo movimiento
 	set_physics_process(false)  # Desactivar el procesamiento físico
-	collision_layer = 0  # Desactivar colisiones 
-	collision_mask = 0
+	#collision_layer = 0  # Desactivar colisiones 
+	#collision_mask = 0
 	
 	animated_sprite.play("death")
 	
 	# Esperar a que termine la animación antes de eliminar
 	await animated_sprite.animation_finished
 	# Una vez terminada la animación, eliminar el objeto
-	queue_free()
+	#queue_free()
 	get_tree().call_group("death_ui","show")
 
 	
