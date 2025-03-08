@@ -11,6 +11,7 @@ func _ready():
 
 func register_player(player: Node):
 	current_player = player
+	print(current_player)
 	respawn_point = player.global_position
 
 func respawn_player():
