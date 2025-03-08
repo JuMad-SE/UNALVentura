@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed:float
 @export var jump_speed:float
 @onready var animated_sprite = $AnimatedSprite
+@onready var sonidoPasos = $"../AudioStreamPlayer2"
 var is_facing_right = true
 var gravity  = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -25,8 +26,13 @@ func update_animations():
 	
 	if velocity.x:
 		animated_sprite.play("run")
+		if not sonidoPasos.playing:
+			sonidoPasos.play()
+		
 	else:
 		animated_sprite.play("idle")
+		if sonidoPasos.playing:
+			sonidoPasos.stop()
 
 func jump(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
