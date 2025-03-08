@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ajwfdwxk0jo"]
+
+[ext_resource type="Script" uid="uid://bwklcb2aolauu" path="res://scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" path="res://sprites/background/ciudad.jpg" id="2_cayip"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
+bg_color = Color(0.298039, 0.376471, 0.6, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.259209, 0.43573, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cayip")
+expand_mode = 1
+
+[node name="Botones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -77.5
+offset_right = 161.5
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="Jugar" type="Button" parent="Botones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+text = "JUGAR"
+
+[node name="Options" type="Button" parent="Botones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+text = "OPCIONES"
+
+[node name="Quit" type="Button" parent="Botones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+text = "SALIR
+"
+
+[connection signal="pressed" from="Botones/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="Botones/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Botones/Quit" to="." method="_on_quit_pressed"]

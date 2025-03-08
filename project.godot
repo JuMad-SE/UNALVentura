@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Juego Visual"
-run/main_scene="uid://fftovnja16u4"
+run/main_scene="uid://b8ajwfdwxk0jo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+MusicController="*res://scripts/MusicController.gd"
 
 [display]
 
