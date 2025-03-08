@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://dab4lu28k6ltm"]
+[gd_scene load_steps=47 format=3 uid="uid://dab4lu28k6ltm"]
 
 [ext_resource type="Script" uid="uid://gnbve2n7b3a5" path="res://scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://b3wad6u006nht" path="res://sounds/damagePlayer.mp3" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://6ls5ra6jarc5" path="res://sprites/player/NightThief.png" id="3_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
@@ -341,5 +342,8 @@ shape = SubResource("RectangleShape2D_6t5aa")
 debug_color = Color(0.709688, 0.327177, 0.9007, 0.42)
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
+
+[node name="damage_player_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6t5aa")
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

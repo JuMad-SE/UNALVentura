@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7bp0y2pjo084"]
+[gd_scene load_steps=7 format=3 uid="uid://c7bp0y2pjo084"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://bwklcb2aolauu" path="res://scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://drujo71y0w0s0" path="res://sprites/background/fondo2.jpeg" id="2_xhh6f"]
 [ext_resource type="Theme" uid="uid://3tx6l7m0r8ph" path="res://resources/default.tres" id="3_158mb"]
 [ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="4_wwsa2"]
+[ext_resource type="AudioStream" uid="uid://ouqsl13en50s" path="res://sounds/gameMusic.mp3" id="5_wwsa2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jsrd8"]
 font = ExtResource("4_wwsa2")
@@ -73,6 +74,7 @@ text = "Salir
 "
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 71.0
 offset_top = 36.0
 offset_right = 429.0
@@ -80,6 +82,9 @@ offset_bottom = 88.0
 text = "UnalVentura"
 label_settings = SubResource("LabelSettings_jsrd8")
 horizontal_alignment = 1
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wwsa2")
 
 [connection signal="pressed" from="Botones/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="Botones/Options" to="." method="_on_options_pressed"]
