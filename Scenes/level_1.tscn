@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://fftovnja16u4"]
+[gd_scene load_steps=21 format=4 uid="uid://fftovnja16u4"]
 
+[ext_resource type="Script" uid="uid://cj0f0kc6uknl3" path="res://Scenes/level.gd" id="1_evi0p"]
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://dfsjg07ycfqi8" path="res://sprites/stair&block.png" id="3_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://c7mng3jv12alr" path="res://sprites/blocks.png" id="4_wrinw"]
@@ -9,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bb2pye1dhssp0" path="res://sprites/sign.png" id="8_6r07y"]
 [ext_resource type="AudioStream" uid="uid://ouqsl13en50s" path="res://sounds/gameMusic.mp3" id="8_xrdnt"]
 [ext_resource type="AudioStream" uid="uid://cb8f4302vq4vm" path="res://sounds/paso corto.mp3" id="9_wrinw"]
+[ext_resource type="PackedScene" uid="uid://poqegt6tvdlb" path="res://Scenes/deathUI.tscn" id="10_af3po"]
+[ext_resource type="PackedScene" uid="uid://ds8e5cgijvpir" path="res://Scenes/victoryUI.tscn" id="11_uy8f0"]
+[ext_resource type="PackedScene" uid="uid://byun8pgsil6h2" path="res://Scenes/level_end.tscn" id="12_uy8f0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ioyp"]
 texture = ExtResource("3_xrdnt")
@@ -93,6 +97,7 @@ sources/6 = SubResource("TileSetAtlasSource_pjppf")
 sources/7 = SubResource("TileSetAtlasSource_yltlr")
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_evi0p")
 
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
 position = Vector2(280, 347)
@@ -100,6 +105,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_bottom = 500
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(17, 13)
@@ -113,3 +120,10 @@ autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_wrinw")
+
+[node name="DeathUi" parent="." instance=ExtResource("10_af3po")]
+
+[node name="VictoryUi" parent="." groups=["victory_ui"] instance=ExtResource("11_uy8f0")]
+
+[node name="LevelEnd" parent="." instance=ExtResource("12_uy8f0")]
+position = Vector2(1657, 27)
