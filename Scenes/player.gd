@@ -9,11 +9,18 @@ extends CharacterBody2D
 @export var invulnerability_duration:float = 1.0  # Duración de la inmunidad en segundos
 
 var is_invulnerable = false
+@onready var sonidoPasos = $"../AudioStreamPlayer2"
 var is_facing_right = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
+#----------Variables de vida------------------------
+var is_dead:= false
+var respawn_point: Vector2
 
 func _ready():
+	GameManager.register_player(self)
+	respawn_point = global_position
+	is_dead = false
 	add_to_group("player")
 	# Conectar la señal animation_finished
 	animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -27,6 +34,12 @@ func _physics_process(delta):
 	update_animations()
 	move_and_slide()
 	
+	if global_position.y > 500 and !is_dead:
+		die()
+	
+	if GameManager.level_complete:
+		return
+
 	
 func take_damage(damage):
 	# Solo recibir daño si no está en estado de inmunidad
@@ -63,7 +76,9 @@ func start_blinking():
 	modulate = normal_color
 	
 
-func die():
+func die():	
+	is_dead = true
+	set_physics_process(false)
 	velocity = Vector2.ZERO  # Detener todo movimiento
 	set_physics_process(false)  # Desactivar el procesamiento físico
 	collision_layer = 0  # Desactivar colisiones 
@@ -75,6 +90,7 @@ func die():
 	await animated_sprite.animation_finished
 	# Una vez terminada la animación, eliminar el objeto
 	queue_free()
+	get_tree().call_group("death_ui","show")
 
 	
 	
@@ -130,3 +146,12 @@ func _on_attack_area_body_entered(body):
 		# Verificar si el cuerpo tiene el método "take_damage"
 		if body.has_method("take_damage"):
 			body.take_damage(attack_damage)
+
+
+
+#-----------Funciones de control de vida---------------------
+
+func respawn():
+	is_dead = false
+	set_physics_process(true)
+	get_tree().call_group("death_ui","hide")
