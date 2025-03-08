@@ -163,6 +163,7 @@ func _on_attack_area_body_entered(body):
 
 func respawn():
 	is_dead = false
+	health = 40
 	set_physics_process(true)
 	get_tree().call_group("death_ui","hide")
 	respawn_sound.play()

@@ -73,6 +73,7 @@ text = "Salir
 "
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 71.0
 offset_top = 36.0
 offset_right = 429.0
