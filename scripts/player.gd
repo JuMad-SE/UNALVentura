@@ -5,11 +5,13 @@ extends CharacterBody2D
 @export var jump_speed:float
 @export var attack_damage:int = 50  # Daño que hace cada ataque
 @onready var animated_sprite = $AnimatedSprite
+@onready var you_lost_sound = $"../youLostSound"
+@onready var attack_sound = $"../attack"
+@onready var stepSound = $"../step"
 @onready var attack_area = $AttackArea # Área de colisión para el ataque (deberás crearla)
 @export var invulnerability_duration:float = 1.0  # Duración de la inmunidad en segundos
 
 var is_invulnerable = false
-@onready var sonidoPasos = $"../AudioStreamPlayer2"
 var is_facing_right = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
@@ -85,6 +87,7 @@ func die():
 	#collision_mask = 0
 	
 	animated_sprite.play("death")
+	you_lost_sound.play()
 	
 	# Esperar a que termine la animación antes de eliminar
 	await animated_sprite.animation_finished
@@ -100,6 +103,7 @@ func update_animations():
 		is_attacking = true
 		# Activar el área de ataque cuando comienza la animación de ataque
 		attack_area.monitoring = true
+		attack_sound.play()
 	
 	# Si está atacando, no cambiar la animación
 	if is_attacking:
@@ -107,8 +111,13 @@ func update_animations():
 	
 	if velocity.x != 0:
 		animated_sprite.play("run")
+		if not stepSound.playing:
+			stepSound.play()
+		
 	else:
 		animated_sprite.play("idle")
+		if stepSound.playing:
+			stepSound.stop()
 
 func _on_animation_finished():
 	# Esta función se llamará cuando termine cualquier animación
