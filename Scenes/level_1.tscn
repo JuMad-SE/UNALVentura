@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://nalqghxyv7p8"]
+[gd_scene load_steps=27 format=4 uid="uid://nalqghxyv7p8"]
 
 [ext_resource type="Script" uid="uid://cj0f0kc6uknl3" path="res://scripts/level.gd" id="1_evi0p"]
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ba5k4i12k7858" path="res://sprites/ciudadUpper.jpeg" id="15_pjppf"]
 [ext_resource type="AudioStream" uid="uid://bxm5qethe7rp4" path="res://sounds/perder.mp3" id="16_8i23i"]
 [ext_resource type="AudioStream" uid="uid://cd5tasyu8of66" path="res://sounds/inicio de juego.mp3" id="17_8yhm2"]
+[ext_resource type="PackedScene" uid="uid://b3yvd5m3fknb6" path="res://Scenes/pauseMenu.tscn" id="19_yltlr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ioyp"]
 texture = ExtResource("3_xrdnt")
@@ -130,6 +131,8 @@ stream = ExtResource("9_wrinw")
 
 [node name="VictoryUi" parent="." groups=["victory_ui"] instance=ExtResource("11_uy8f0")]
 script = ExtResource("14_pjppf")
+
+[node name="PauseMenu" parent="." instance=ExtResource("19_yltlr")]
 
 [node name="LevelEnd" parent="." instance=ExtResource("12_uy8f0")]
 position = Vector2(1657, 27)
