@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://3tx6l7m0r8ph"]
+
+[ext_resource type="Texture2D" uid="uid://doom0hn2ykegj" path="res://sprites/UI/Button.png" id="1_i71n2"]
+[ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="1_vajuw"]
+[ext_resource type="Texture2D" uid="uid://dgyfau4h7ndj3" path="res://sprites/UI/Button_press.png" id="3_7bl14"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrfyl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrfyl"]
+texture = ExtResource("3_7bl14")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_300pt"]
+texture = ExtResource("1_i71n2")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(-0.147865, 0.021723, 46.1479, 14.1387)
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 17
+Button/fonts/font = ExtResource("1_vajuw")
+Button/styles/disabled = SubResource("StyleBoxFlat_hrfyl")
+Button/styles/focus = SubResource("StyleBoxTexture_hrfyl")
+Button/styles/hover = SubResource("StyleBoxTexture_300pt")
+Button/styles/normal = SubResource("StyleBoxTexture_300pt")
+Button/styles/pressed = SubResource("StyleBoxTexture_hrfyl")
