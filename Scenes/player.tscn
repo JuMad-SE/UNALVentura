@@ -158,7 +158,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(17, 20)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_cvnsp")
 move_speed = 140.0
 jump_speed = 400.0

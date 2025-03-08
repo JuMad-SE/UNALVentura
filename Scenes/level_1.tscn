@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://fftovnja16u4"]
+[gd_scene load_steps=5 format=3 uid="uid://fftovnja16u4"]
 
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://dt0cavpqk2a7h" path="res://sprites/platform.png" id="2_8ffim"]
+[ext_resource type="PackedScene" uid="uid://poqegt6tvdlb" path="res://Scenes/deathUI.tscn" id="3_xfk5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
 size = Vector2(378, 30)
@@ -12,6 +13,8 @@ size = Vector2(378, 30)
 position = Vector2(91, 216)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_bottom = 500
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(223, 244)
@@ -22,3 +25,5 @@ texture = ExtResource("2_8ffim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("RectangleShape2D_xfk5q")
+
+[node name="DeathUi" parent="." instance=ExtResource("3_xfk5q")]
