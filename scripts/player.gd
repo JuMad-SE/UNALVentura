@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var you_lost_sound = $"../youLostSound"
 @onready var attack_sound = $"../attack"
 @onready var stepSound = $"../step"
+@onready var respawn_sound = $"../respawn"
 @onready var attack_area = $AttackArea # Área de colisión para el ataque (deberás crearla)
 @export var invulnerability_duration:float = 1.0  # Duración de la inmunidad en segundos
 
@@ -164,3 +165,4 @@ func respawn():
 	is_dead = false
 	set_physics_process(true)
 	get_tree().call_group("death_ui","hide")
+	respawn_sound.play()
