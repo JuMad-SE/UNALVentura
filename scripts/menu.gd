@@ -1,6 +1,9 @@
 extends Control
 
 
+func _ready():
+	MusicController.play_music("res://Sounds/gameMusic.mp3")
+
 func _on_jugar_pressed():
 	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
 	
