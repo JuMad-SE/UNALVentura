@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://cf62vkjfocuce"]
 
 [ext_resource type="Texture2D" uid="uid://cpnlul3hf4drq" path="res://sprites/player/Officer_sheet_unboxed_0.png" id="1_kjctq"]
-[ext_resource type="Script" uid="uid://cqqu732twb624" path="res://Scenes/police.gd" id="2_b50pw"]
+[ext_resource type="Script" uid="uid://cqqu732twb624" path="res://scripts/police.gd" id="2_b50pw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b50pw"]
 atlas = ExtResource("1_kjctq")
