@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://cf62vkjfocuce"]
+[gd_scene load_steps=43 format=3 uid="uid://cf62vkjfocuce"]
 
 [ext_resource type="Texture2D" uid="uid://cpnlul3hf4drq" path="res://sprites/player/Officer_sheet_unboxed_0.png" id="1_kjctq"]
 [ext_resource type="Script" uid="uid://cqqu732twb624" path="res://scripts/police.gd" id="2_b50pw"]
+[ext_resource type="AudioStream" uid="uid://ciu50hdevmije" path="res://sounds/damagePolice.mp3" id="3_8r43d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b50pw"]
 atlas = ExtResource("1_kjctq")
@@ -323,5 +324,10 @@ shape = SubResource("RectangleShape2D_b50pw")
 debug_color = Color(0.781033, 0.292386, 0.811059, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="damagePolice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8r43d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

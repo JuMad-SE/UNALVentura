@@ -4,6 +4,7 @@ var current_track = null
 var volume_db = -20.0  # Valor inicial a -20dB
 var min_volume_db = -80.0  # Volumen mínimo
 var max_volume_db = 0.0   # Volumen máximo (0dB)
+@onready var damagePolice = $damagePolice
 
 func _ready():
 	add_child(music_player)

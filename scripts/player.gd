@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var stepSound = $"../step"
 @onready var respawn_sound = $"../respawn"
 @onready var attack_area = $AttackArea # Área de colisión para el ataque (deberás crearla)
+@onready var damage_player_sound = $damage_player_sound
 @export var invulnerability_duration:float = 1.0  # Duración de la inmunidad en segundos
 
 var is_invulnerable = false
@@ -50,6 +51,7 @@ func take_damage(damage):
 		return
 
 	health -= damage
+	damage_player_sound.play()
 	
 	if health <= 0:
 		die()
@@ -163,6 +165,7 @@ func _on_attack_area_body_entered(body):
 
 func respawn():
 	is_dead = false
+	health = 40
 	set_physics_process(true)
 	get_tree().call_group("death_ui","hide")
 	respawn_sound.play()
