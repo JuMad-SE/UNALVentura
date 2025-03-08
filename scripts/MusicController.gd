@@ -1,7 +1,7 @@
 extends Node
 var music_player = AudioStreamPlayer.new()
 var current_track = null
-var volume_db = -30.0  # Valor inicial a -50dB
+var volume_db = -20.0  # Valor inicial a -50dB
 var min_volume_db = -80.0  # Volumen mínimo
 var max_volume_db = 0.0   # Volumen máximo (0dB)
 
