@@ -1,4 +1,5 @@
-[gd_scene load_steps=24 format=4 uid="uid://fftovnja16u4"]
+[gd_scene load_steps=26 format=4 uid="uid://fftovnja16u4"]
+
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_evi0p"]
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
@@ -16,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://drujo71y0w0s0" path="res://sprites/background/fondo2.jpeg" id="14_6ioyp"]
 [ext_resource type="Script" path="res://scripts/victory_ui.gd" id="14_pjppf"]
 [ext_resource type="AudioStream" uid="uid://cbaow3rnp6dhs" path="res://sounds/ataque.mp3" id="15_oovug"]
+[ext_resource type="Texture2D" uid="uid://ba5k4i12k7858" path="res://sprites/ciudadUpper.jpeg" id="15_pjppf"]
+[ext_resource type="AudioStream" uid="uid://bxm5qethe7rp4" path="res://sounds/perder.mp3" id="16_8i23i"]
+[ext_resource type="AudioStream" uid="uid://cd5tasyu8of66" path="res://sounds/inicio de juego.mp3" id="17_8yhm2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ioyp"]
 texture = ExtResource("3_xrdnt")
@@ -143,11 +147,24 @@ position = Vector2(1657, 27)
 motion_mirroring = Vector2(626, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-253, -25)
+position = Vector2(-267, -47)
 texture = ExtResource("14_6ioyp")
 centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(469, -90)
+rotation = 3.14159
+texture = ExtResource("15_pjppf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(469, -176)
+texture = ExtResource("15_pjppf")
 
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_oovug")
 
 [node name="youLostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_8i23i")
+
+[node name="respawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_8yhm2")
