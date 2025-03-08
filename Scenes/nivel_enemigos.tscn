@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://fftovnja16u4"]
+
+[ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_8teyj"]
+[ext_resource type="Texture2D" uid="uid://dt0cavpqk2a7h" path="res://sprites/platform.png" id="2_jimr6"]
+[ext_resource type="PackedScene" uid="uid://cf62vkjfocuce" path="res://Scenes/police.tscn" id="3_rtkqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
+size = Vector2(378, 30)
+
+[node name="nivel_enemigos" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8teyj")]
+position = Vector2(101, 200)
+move_speed = 200.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(223, 244)
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("2_jimr6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_xfk5q")
+
+[node name="Police" parent="." instance=ExtResource("3_rtkqc")]
+position = Vector2(366, 197)
+detection_range = 150.0
+
+[node name="Police2" parent="." instance=ExtResource("3_rtkqc")]
+position = Vector2(-127, 198)
