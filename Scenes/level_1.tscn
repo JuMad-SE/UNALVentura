@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://fftovnja16u4"]
+[gd_scene load_steps=15 format=4 uid="uid://fftovnja16u4"]
 
 [ext_resource type="PackedScene" uid="uid://dab4lu28k6ltm" path="res://Scenes/player.tscn" id="1_vk57k"]
-[ext_resource type="Texture2D" uid="uid://dt0cavpqk2a7h" path="res://sprites/platform.png" id="2_8ffim"]
 [ext_resource type="Texture2D" uid="uid://dfsjg07ycfqi8" path="res://sprites/stair&block.png" id="3_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://c7mng3jv12alr" path="res://sprites/blocks.png" id="4_wrinw"]
 [ext_resource type="Texture2D" uid="uid://bfu76ylpsm65" path="res://sprites/tree.png" id="5_chwpn"]
@@ -9,16 +8,32 @@
 [ext_resource type="Texture2D" uid="uid://cmqsuvr8j411n" path="res://sprites/fence.png" id="7_uy8f0"]
 [ext_resource type="Texture2D" uid="uid://bb2pye1dhssp0" path="res://sprites/sign.png" id="8_6r07y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
-size = Vector2(378, 30)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ioyp"]
 texture = ExtResource("3_xrdnt")
 texture_region_size = Vector2i(20, 20)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.96176, -9.92262, 9.96176, -9.96176, 9.92262, 9.96176, -9.92262, 10.0009)
+5:1/0 = 0
+5:0/0 = 0
+5:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oovug"]
 texture = ExtResource("4_wrinw")
@@ -60,6 +75,8 @@ texture_region_size = Vector2i(13, 57)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6ssoq"]
+tile_size = Vector2i(20, 20)
+physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_6ioyp")
 sources/2 = SubResource("TileSetAtlasSource_oovug")
 sources/3 = SubResource("TileSetAtlasSource_8i23i")
@@ -70,19 +87,12 @@ sources/7 = SubResource("TileSetAtlasSource_yltlr")
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
-position = Vector2(91, 216)
+position = Vector2(284, 343)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(223, 244)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground"]
-texture = ExtResource("2_8ffim")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("RectangleShape2D_xfk5q")
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAALABIAAQABAAAAAAAMABIAAQABAAAAAAANABIAAQABAAAAAAAOABIAAQABAAAAAAAPABIAAQABAAAAAAAQABIAAQABAAAAAAARABEAAQABAAAAAAASABEAAQABAAAAAAAVABEAAQABAAAAAAAUABEAAQABAAAAAAALABMAAQABAAEAAAAMABMAAQABAAEAAAANABMAAQABAAEAAAAOABQAAQABAAEAAAAPABQAAQABAAEAAAAOABMAAQABAAEAAAAPABMAAQABAAEAAAAQABMAAQABAAEAAAARABIAAQABAAEAAAARABMAAQABAAEAAAARABQAAQABAAEAAAASABIAAQABAAEAAAASABMAAQABAAEAAAASABQAAQABAAEAAAATABMAAQABAAEAAAATABQAAQABAAEAAAAUABIAAQABAAEAAAAUABMAAQABAAEAAAAUABQAAQABAAEAAAAVABIAAQABAAEAAAAVABMAAQABAAEAAAAVABQAAQABAAEAAAARABUAAQABAAEAAAARABYAAQABAAEAAAASABUAAQABAAEAAAASABYAAQABAAEAAAATABUAAQABAAEAAAATABYAAQABAAEAAAAUABUAAQABAAEAAAAUABYAAQABAAEAAAAVABUAAQABAAEAAAAVABYAAQABAAEAAAALABQAAQABAAEAAAALABUAAQABAAEAAAALABYAAQABAAEAAAAMABQAAQABAAEAAAAMABUAAQABAAEAAAAMABYAAQABAAEAAAANABQAAQABAAEAAAANABUAAQABAAEAAAANABYAAQABAAEAAAAOABUAAQABAAEAAAAOABYAAQABAAEAAAAPABUAAQABAAEAAAAPABYAAQABAAEAAAAQABQAAQABAAEAAAAQABUAAQABAAEAAAAQABYAAQABAAEAAAATABIAAQABAAEAAAATABEAAQABAAAAAAASAA8ABAAAAAAAAAAWABAABgAAAAAAAAAXABIAAQABAAEAAAAXABMAAQABAAEAAAAXABQAAQABAAEAAAAXABUAAQABAAEAAAAXABYAAQABAAEAAAAYABIAAQABAAEAAAAYABMAAQABAAEAAAAYABQAAQABAAEAAAAYABUAAQABAAEAAAAYABYAAQABAAEAAAAZABIAAQABAAEAAAAZABMAAQABAAEAAAAZABQAAQABAAEAAAAZABUAAQABAAEAAAAZABYAAQABAAEAAAAaABIAAQABAAEAAAAaABMAAQABAAEAAAAaABQAAQABAAEAAAAaABUAAQABAAEAAAAaABYAAQABAAEAAAAbABIAAQABAAEAAAAbABQAAQABAAEAAAAbABUAAQABAAEAAAAbABYAAQABAAEAAAAcABIAAQABAAEAAAAcABQAAQABAAEAAAAcABUAAQABAAEAAAAcABYAAQABAAEAAAAXABEAAQABAAAAAAAYABEAAQABAAAAAAAZABEAAQABAAAAAAAaABEAAQABAAAAAAAbABEAAQABAAAAAAAcABEAAQABAAAAAAAcABMAAQABAAEAAAAbABMAAQABAAEAAAAbAA8AAwAAAAAAAAAZABAAAgAEAAIAAAA=")
 tile_set = SubResource("TileSet_6ssoq")
