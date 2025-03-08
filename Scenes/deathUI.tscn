@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://poqegt6tvdlb"]
+[gd_scene load_steps=6 format=3 uid="uid://poqegt6tvdlb"]
 
 [ext_resource type="Script" uid="uid://dwe5dpa55p7ih" path="res://Scenes/death_ui.gd" id="1_e6fjf"]
+[ext_resource type="Texture2D" uid="uid://cm2xq3c5fqewb" path="res://sprites/UI/UIback.png" id="2_jjx78"]
+[ext_resource type="Theme" uid="uid://3tx6l7m0r8ph" path="res://resources/default.tres" id="4_jjx78"]
+[ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="4_o8jgg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_foxjn"]
+font = ExtResource("4_o8jgg")
+font_size = 20
+font_color = Color(1, 0.960784, 0.941176, 1)
 
 [node name="DeathUi" type="CanvasLayer" groups=["death_ui"]]
 script = ExtResource("1_e6fjf")
@@ -8,25 +16,48 @@ script = ExtResource("1_e6fjf")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 484.0
 offset_bottom = 269.0
-color = Color(3.85046e-06, 0.652928, 0.860931, 1)
+color = Color(0, 0.12549, 0.145098, 0.258824)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
 offset_right = 486.0
 offset_bottom = 268.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 61.0
+offset_right = 320.0
+offset_bottom = 200.0
+texture = ExtResource("2_jjx78")
+region_rect = Rect2(0, 0, 44, 44)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/NinePatchRect"]
 layout_mode = 2
+offset_left = 185.0
+offset_top = 84.0
+offset_right = 299.0
+offset_bottom = 107.0
 text = "Has muerto"
+label_settings = SubResource("LabelSettings_foxjn")
 horizontal_alignment = 1
 
-[node name="Respawn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+[node name="Respawn" type="Button" parent="ColorRect/MarginContainer/NinePatchRect"]
 layout_mode = 2
-text = "Reaparecer"
+offset_left = 184.0
+offset_top = 133.0
+offset_right = 299.0
+offset_bottom = 161.0
+theme = ExtResource("4_jjx78")
+text = "Respawn"
 
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/NinePatchRect/Respawn" to="." method="_on_respawn_pressed"]
