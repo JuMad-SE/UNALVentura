@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var lose_interest_range: float = 300.0
 @export var attack_damage: int = 10
 @export var attack_cooldown: float = 1.0  # Tiempo entre ataques
+@export var distance_movement:int = 100
 
 # Referencias a nodos
 @onready var animated_sprite = $AnimatedSprite
@@ -29,6 +30,7 @@ var player = null
 var isdead = false
 var can_attack = true
 var is_facing_right = true
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	add_to_group("enemies")
@@ -55,8 +57,8 @@ func _ready():
 	# Usamos la posición actual como punto central
 	var center_position = global_position
 	patrol_positions = [
-		Vector2(center_position.x - 100, center_position.y),
-		Vector2(center_position.x + 100, center_position.y)
+		Vector2(center_position.x - distance_movement, center_position.y),
+		Vector2(center_position.x + distance_movement, center_position.y)
 	]
 	
 	# Iniciar animación idle
@@ -70,6 +72,12 @@ func _physics_process(delta):
 	# Buscar al jugador si no lo tenemos
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
+	
+		# Aplicar gravedad
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0  # Detener la caída cuando toca el suelo
 	
 	match current_state:
 		State.PATROL:
@@ -88,7 +96,7 @@ func _physics_process(delta):
 	# Actualizar la dirección del sprite
 	update_facing()
 
-func patrol_state(delta):
+func patrol_state(_delta):
 	# Verificar si el jugador está en rango de detección
 	if player and global_position.distance_to(player.global_position) < detection_range:
 		change_state(State.CHASE)
@@ -113,7 +121,7 @@ func patrol_state(delta):
 		else: 
 			animated_sprite.play("death")
 
-func chase_state(delta):
+func chase_state(_delta):
 	if !player:
 		change_state(State.PATROL)
 		return

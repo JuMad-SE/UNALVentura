@@ -28,12 +28,12 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-func take_damage(attack_damage):
+func take_damage(damage):
 	# Solo recibir daño si no está en estado de inmunidad
 	if is_invulnerable:
 		return
 
-	health -= attack_damage
+	health -= damage
 	
 	if health <= 0:
 		die()
@@ -51,7 +51,7 @@ func take_damage(attack_damage):
 
 func start_blinking():
 	# Efecto de parpadeo durante la inmunidad
-	var blink_color = Color(1, 0.5, 0.5, 1)  # Rojo suave
+	var blink_color = Color(0.8, 0.8, 0.8, 1)   # Rojo suave
 	var normal_color = Color(1, 1, 1, 1)     # Color normal
 
 	for i in range(10):  # Ajusta para más o menos parpadeos
