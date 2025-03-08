@@ -26,6 +26,7 @@ var waiting_at_patrol_point = false  # Nueva variable para controlar el estado d
 enum State { PATROL, CHASE, ATTACK, HURT, DEATH }
 var current_state = State.PATROL
 var player = null
+var isdead = false
 var can_attack = true
 var is_facing_right = true
 
@@ -107,7 +108,10 @@ func patrol_state(delta):
 		# Moverse hacia el punto de patrulla actual
 		var direction = (patrol_positions[current_patrol_index] - global_position).normalized()
 		velocity.x = direction.x * patrol_speed
-		animated_sprite.play("walk")
+		if isdead == false : 
+			animated_sprite.play("walk")
+		else: 
+			animated_sprite.play("death")
 
 func chase_state(delta):
 	if !player:
@@ -175,11 +179,12 @@ func take_damage(damage):
 		change_state(State.PATROL)
 
 func die():
+	isdead = true
 	velocity = Vector2.ZERO  # Detener todo movimiento
 	set_physics_process(false)  # Desactivar el procesamiento físico
 	collision_layer = 0  # Desactivar colisiones 
 	collision_mask = 0
-	
+	animated_sprite.stop()
 	animated_sprite.play("death")
 	
 	# Esperar a que termine la animación antes de eliminar
@@ -225,7 +230,10 @@ func _on_patrol_timer_timeout():
 	# Reiniciar el movimiento inmediatamente
 	var direction = (patrol_positions[current_patrol_index] - global_position).normalized()
 	velocity.x = direction.x * patrol_speed
-	animated_sprite.play("walk")
+	if isdead == false : 
+		animated_sprite.play("walk")
+	else: 
+		animated_sprite.play("death")
 
 func _on_attack_cooldown_timeout():
 	can_attack = true
