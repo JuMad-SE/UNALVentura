@@ -16,6 +16,7 @@ extends CharacterBody2D
 @onready var patrol_timer = $PatrolTimer
 @onready var attack_cooldown_timer = $AttackCooldownTimer
 @onready var attack_area = $AttackArea
+@onready var damagePolice = $damagePolice
 
 # Variables para el patrullaje
 var patrol_positions = []
@@ -175,6 +176,7 @@ func take_damage(damage):
 	
 	# Reproducir animación de daño
 	animated_sprite.play("hurt")
+	damagePolice.play()
 	start_blinking()
 	
 	# Esperar a que termine la animación
