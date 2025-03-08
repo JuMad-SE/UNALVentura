@@ -110,6 +110,8 @@ script = ExtResource("1_evi0p")
 position = Vector2(280, 347)
 collision_layer = 3
 collision_mask = 3
+move_speed = 150.0
+jump_speed = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
