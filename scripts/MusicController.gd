@@ -12,7 +12,7 @@ func _ready():
 	
 	# Agregar una señal para detectar cuando la música termina
 	music_player.finished.connect(_on_music_finished)
-	
+
 func play_music(track_path):
 	if current_track == track_path and music_player.playing:
 		return

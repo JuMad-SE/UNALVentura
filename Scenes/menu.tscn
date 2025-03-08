@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7bp0y2pjo084"]
+[gd_scene load_steps=6 format=3 uid="uid://b8ajwfdwxk0jo"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://bwklcb2aolauu" path="res://scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://drujo71y0w0s0" path="res://sprites/background/fondo2.jpeg" id="2_xhh6f"]
 [ext_resource type="Theme" uid="uid://3tx6l7m0r8ph" path="res://resources/default.tres" id="3_158mb"]
 [ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="4_wwsa2"]
@@ -73,6 +73,7 @@ text = "Salir
 "
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 71.0
 offset_top = 36.0
 offset_right = 429.0

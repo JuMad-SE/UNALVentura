@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3yvd5m3fknb6"]
 
-[ext_resource type="Script" uid="uid://c01dtjr0rsorg" path="res://Scenes/pause_menu.gd" id="1_15pn7"]
+[ext_resource type="Script" uid="uid://c01dtjr0rsorg" path="res://pause_menu.gd" id="1_15pn7"]
 [ext_resource type="Theme" uid="uid://3tx6l7m0r8ph" path="res://resources/default.tres" id="3_bog3y"]
 [ext_resource type="FontFile" uid="uid://cypg460wvilq0" path="res://sprites/fonts/MinimalPixel v2.ttf" id="4_1gc43"]
 
@@ -65,13 +65,6 @@ theme = ExtResource("3_bog3y")
 theme_override_constants/h_separation = 4
 theme_override_font_sizes/font_size = 20
 text = "Respawn"
-
-[node name="Opciones" type="Button" parent="Botones"]
-layout_mode = 2
-theme = ExtResource("3_bog3y")
-theme_override_constants/h_separation = 4
-theme_override_font_sizes/font_size = 20
-text = "Opciones"
 
 [node name="Salir" type="Button" parent="Botones"]
 layout_mode = 2
