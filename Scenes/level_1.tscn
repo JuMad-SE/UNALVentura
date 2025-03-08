@@ -10,12 +10,14 @@ size = Vector2(378, 30)
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vk57k")]
-position = Vector2(91, 216)
+position = Vector2(101, 200)
+move_speed = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(223, 244)
+scale = Vector2(2, 2)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
@@ -25,4 +27,5 @@ texture = ExtResource("2_8ffim")
 shape = SubResource("RectangleShape2D_xfk5q")
 
 [node name="Police" parent="." instance=ExtResource("3_xfk5q")]
-position = Vector2(352, 214)
+position = Vector2(366, 197)
+detection_range = 150.0

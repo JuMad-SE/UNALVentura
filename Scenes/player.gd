@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 @export var move_speed:float
+@export var health:float = 40
 @export var jump_speed:float
-@export var attack_damage:int = 10  # Daño que hace cada ataque
+@export var attack_damage:int = 50  # Daño que hace cada ataque
 @onready var animated_sprite = $AnimatedSprite
 @onready var attack_area = $AttackArea # Área de colisión para el ataque (deberás crearla)
+@export var invulnerability_duration:float = 1.0  # Duración de la inmunidad en segundos
 
+var is_invulnerable = false
 var is_facing_right = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
@@ -26,7 +29,55 @@ func _physics_process(delta):
 	
 	
 func take_damage(attack_damage):
-	print(attack_damage)
+	# Solo recibir daño si no está en estado de inmunidad
+	if is_invulnerable:
+		return
+
+	health -= attack_damage
+	
+	if health <= 0:
+		die()
+		return
+	
+	# Activar la inmunidad temporal
+	is_invulnerable = true
+	start_blinking()
+
+	# Usar un Timer para restaurar la vulnerabilidad
+	await get_tree().create_timer(invulnerability_duration).timeout
+	is_invulnerable = false
+	modulate = Color(1, 1, 1, 1)  # Asegurarse de que el color vuelva a ser normal
+
+
+func start_blinking():
+	# Efecto de parpadeo durante la inmunidad
+	var blink_color = Color(1, 0.5, 0.5, 1)  # Rojo suave
+	var normal_color = Color(1, 1, 1, 1)     # Color normal
+
+	for i in range(10):  # Ajusta para más o menos parpadeos
+		modulate = blink_color
+		await get_tree().create_timer(0.1).timeout
+		modulate = normal_color
+		await get_tree().create_timer(0.1).timeout
+	
+	modulate = normal_color
+	
+
+func die():
+	velocity = Vector2.ZERO  # Detener todo movimiento
+	set_physics_process(false)  # Desactivar el procesamiento físico
+	collision_layer = 0  # Desactivar colisiones 
+	collision_mask = 0
+	
+	animated_sprite.play("death")
+	
+	# Esperar a que termine la animación antes de eliminar
+	await animated_sprite.animation_finished
+	# Una vez terminada la animación, eliminar el objeto
+	queue_free()
+
+	
+	
 func update_animations():
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		animated_sprite.play("attack")

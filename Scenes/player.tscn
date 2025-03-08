@@ -310,18 +310,22 @@ animations = [{
 size = Vector2(17, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
-size = Vector2(7, 20)
+size = Vector2(11, 20)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
-move_speed = 100.0
+move_speed = 120.0
 jump_speed = 200.0
+attack_damage = 10
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -4)
+position = Vector2(0, -6)
+scale = Vector2(1.125, 1.125)
 sprite_frames = SubResource("SpriteFrames_vfarp")
-animation = &"run"
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 2)
@@ -331,7 +335,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(10.5, 2)
+position = Vector2(12.5, 2)
 shape = SubResource("RectangleShape2D_6t5aa")
 debug_color = Color(0.709688, 0.327177, 0.9007, 0.42)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cf62vkjfocuce"]
+[gd_scene load_steps=42 format=3 uid="uid://cf62vkjfocuce"]
 
 [ext_resource type="Texture2D" uid="uid://cpnlul3hf4drq" path="res://sprites/player/Officer_sheet_unboxed_0.png" id="1_kjctq"]
 [ext_resource type="Script" uid="uid://cqqu732twb624" path="res://Scenes/police.gd" id="2_b50pw"]
@@ -18,18 +18,6 @@ region = Rect2(64, 257, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqgtl"]
 atlas = ExtResource("1_kjctq")
 region = Rect2(96, 257, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_is62p"]
-atlas = ExtResource("1_kjctq")
-region = Rect2(128, 257, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jayx7"]
-atlas = ExtResource("1_kjctq")
-region = Rect2(160, 257, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfjoi"]
-atlas = ExtResource("1_kjctq")
-region = Rect2(192, 257, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dti1q"]
 atlas = ExtResource("1_kjctq")
@@ -173,15 +161,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dqgtl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_is62p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jayx7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hfjoi")
 }],
 "loop": false,
 "name": &"attack",
@@ -278,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p0oob")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 8.0
 }, {
@@ -313,16 +292,21 @@ animations = [{
 size = Vector2(10, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b50pw"]
-size = Vector2(9, 28)
+size = Vector2(5, 28)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("2_b50pw")
 health = 30
+patrol_speed = 20.0
+chase_speed = 80.0
+detection_range = 50.0
+attack_range = 20.0
+lose_interest_range = 100.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_21tyr")
-animation = &"walk"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kjctq")
@@ -334,7 +318,7 @@ shape = SubResource("RectangleShape2D_kjctq")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(9.5, 1)
+position = Vector2(7.5, 1)
 shape = SubResource("RectangleShape2D_b50pw")
 debug_color = Color(0.781033, 0.292386, 0.811059, 0.42)
 

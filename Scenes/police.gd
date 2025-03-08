@@ -129,7 +129,7 @@ func chase_state(delta):
 	# Moverse hacia el jugador
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction.x * chase_speed
-	animated_sprite.play("run")  # Asumiendo que tienes una animación "run"
+	animated_sprite.play("run") 
 
 func attack_state():
 	velocity.x = 0
