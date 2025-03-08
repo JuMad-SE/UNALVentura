@@ -1,7 +1,7 @@
 extends Node
 var music_player = AudioStreamPlayer.new()
 var current_track = null
-var volume_db = -20.0  # Valor inicial a -50dB
+var volume_db = -20.0  # Valor inicial a -20dB
 var min_volume_db = -80.0  # Volumen mínimo
 var max_volume_db = 0.0   # Volumen máximo (0dB)
 
@@ -9,6 +9,9 @@ func _ready():
 	add_child(music_player)
 	music_player.bus = "Master"
 	load_settings()
+	
+	# Agregar una señal para detectar cuando la música termina
+	music_player.finished.connect(_on_music_finished)
 	
 func play_music(track_path):
 	if current_track == track_path and music_player.playing:
@@ -19,6 +22,17 @@ func play_music(track_path):
 	music_player.stream = music
 	music_player.volume_db = volume_db
 	music_player.play()
+
+# Esta función se llamará automáticamente cuando la música termine
+func _on_music_finished():
+	# Si la música ha terminado, la reiniciamos
+	if current_track != null:
+		music_player.play()
+
+# Función mejorada para verificar y reiniciar la música
+func ensure_music_playing():
+	if current_track != null and not music_player.playing:
+		music_player.play()
 
 func set_volume(value):
 	# Usamos una curva exponencial para mapear mejor la percepción auditiva humana
@@ -62,8 +76,14 @@ func load_settings():
 	var config = ConfigFile.new()
 	var err = config.load("user://audio_settings.cfg")
 	if err == OK:
-		volume_db = config.get_value("audio", "volume", -50.0)
+		volume_db = config.get_value("audio", "volume", -20.0)  # Cambiado a -20.0 para ser consistente
 	else:
-		volume_db = -50.0  # Valor predeterminado si no hay configuración
+		volume_db = -20.0  # Valor predeterminado si no hay configuración
 	
 	music_player.volume_db = volume_db
+
+# Opcionalmente, puedes agregar este método para comprobar periódicamente
+func _process(_delta):
+	# Verificar si la música debería estar sonando pero no lo está
+	if current_track != null and not music_player.playing:
+		music_player.play()
